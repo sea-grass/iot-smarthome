@@ -1,0 +1,48 @@
+{
+	"globals": {
+		"user": {
+			"name": "DudeGuy",
+			"lastlogin": "Yesterday's date"
+		},
+		"date": "Today's date",
+		"categories":{
+			"Weather":{
+				"indoor":{
+					"data":"21 Celcius"
+				},
+				"outdoor":{
+					"data":"11 Celcius"
+				}
+			}
+		},
+		"rooms": {
+			"room-1": {
+				"name": "Room 1"
+			},
+			"room-2": {
+				"name": "Room 2"
+			},
+			"room-3": {
+				"name": "Room 3"
+			}
+		},
+		"devices": {
+			"device-1": {
+				"rid": "room-1",
+				"name": "Device 1"
+			}
+		},
+		"sensors": {
+			"sensor-1": {
+				"did": "device-1",
+				"type": "light"
+			}
+		},
+		"sensor-data": {
+			"0323151724": {
+				"sid": "sensor-1",
+				"data": "1"
+			}
+		}
+	}
+}
