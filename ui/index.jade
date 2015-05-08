@@ -1,7 +1,67 @@
 extends ./_layout.jade
 
 block content
-  h1 Welcome Home, #{user.name}
-  .hr
+  div.header
+    h1 Welcome Home, #{user.name}
+    p Last Login time: #{user.lastlogin}
+    ul.notifications
+      li Your living room motion sensor triggered at 3:03 AM last night.
+      li The temperature in the home is 22 degrees celcius today.
+      li There is a 30% chance of thunderstorms outside.
+  .hr1
+  div.page
+    h1.title Favourites List
+    div.favourites.viewer
+      for fav, favId in favourites
+        div.panel.favourite
+          h4= fav.favId
+          h4= fav.data
+    h1.title Rooms List
+    div.rooms.viewer
+      for room, roomId in rooms
+        div.panel.room
+          h4= room.name
+          for device, deviceId in devices
+            if device.RoomID === room.ID
+              div.overlay(data-id=deviceId)
+                h2= device.name
+    h1.title Device List
+    div.devices.viewer
+      for device, deviceId in devices
+        div.panel.device(data-id=deviceId)
+          h4= device.name
+          for sensor, sensorId in sensors
+            if sensor.DeviceID === device.ID
+              div.overlay(data-id=sensor.ID)
+                h2= sensor.type
+    h1.title Sensor List
+    div.sensors.viewer
+        for sensor, sensorId in sensors
+          div.panel.sensor(data-id=sensorId)
+            h2= sensor.name
+            h5= sensor.type
+
   h1
     | Last Login: #{date}
+  div
+    | some content here
+  .hr1
+  div.footer
+    | This is footer content
+    div#infoview
+      | This is the console
+
+  script(src="/helper.js")
+  script(src="/index.js")
+  script(src="/d3.min.js")
+  div.debug
+    h1 debug tab
+    for room in sensors
+      div
+        h1 sensor
+        ul
+          for val, key in room
+            li
+              p= key
+              p= val
+            

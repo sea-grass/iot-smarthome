@@ -1,26 +1,131 @@
 body{
-  font-family: "Helvetica";
+  font-family: "Arial";
+  font-weight: bold;
   text-align: center;
-  padding: 50px 20px 0;
-  background: #f4f4f7;
-  color: #444;
+  padding: 20px 20px 0;
+  background: #EFF4FF;
+  color: #0050FF;
   margin: 0;
+  overflow-y: scroll;
+  margin-bottom: 150px;
 }
 
-h1{
-  font-size: 65px;
-  line-height: 1.2em;
-  border-bottom: #CCC solid 1px;
-  padding: 20px 0;
+.page{
+  display: inline-block;
+  width: 100%;
+  background: #87794E;
 }
 
-h3{
-  font-weight: 300;
-}
-
-.hr{
-  border-bottom: 1px solid black;
+.hr1{
+  border-bottom: 1px solid #232323;
   width: 100%;
   height: 1px;
 }
 
+.hr2{
+  border-bottom: 1px solid #565254;
+  width: 100%;
+  height: 1px;
+}
+
+.panel {
+  display: inline-block;
+  margin: 3px 6px 6px 6px;
+  padding: 4px;
+  width: 100px;
+  height: 100px;
+}
+
+.favourite {
+  display: inline-block;
+  background: #A20025;
+  color: #EDECEE;
+}
+
+.favourite:hover {
+  background: #E51400;
+}
+
+.room {
+  display: inline-block;
+  background: #1BA1E2;
+  color: #EDECEE;
+}
+
+.room:hover{
+  background: #00B4FF;
+}
+
+.device {
+  display: inline-block;
+  background: #009A00;
+  color: #EDECEE;
+}
+
+.device:hover{
+  background: #60B917;
+}
+
+.sensor {
+  display: inline-block;
+  background: #DA532C;
+  color: #EDECEE;
+}
+.sensor:hover{
+  background: #E3A21A;
+}
+
+.overlay {
+  display: inline-block;
+  background: #6A00FF;
+  font-size: 3px;
+  margin-right: 2px;
+  margin-left: 2px;
+  width: 25px;
+  height: 25px;
+}
+
+.overlay:hover {
+  background: #AA00FF;
+}
+
+.viewer {
+  display: inline-block;
+  width: 1000px;
+  height: 118px;
+  overflow-y: auto;
+}
+
+.hidden {
+  margin-top: 6px;
+  background: #EFF4FF;
+}
+
+.graph rect {
+  display: inline-block;
+  width: 20px;
+  height: 75px;
+  background: #00A900;
+  text-align: right;
+  margin: 1px;
+  padding: 3px;
+  color: #EDECEE;
+}
+
+.graph text {
+  background: white;
+  font: 10px sans-serif;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding-top: 10px;
+  background: rgba(100, 100, 100, 1);
+}
+
+#infoview {
+  height: 90px;
+}

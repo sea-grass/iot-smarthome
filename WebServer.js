@@ -1,46 +1,42 @@
 #!/usr/local/bin/node
 
 var express = require('express');
-var jade = require('jade');
+var bodyParser = require("body-parser");
 var moment = require('moment');
 
 var app = express();
+app.use(bodyParser.json());
 
-app.get('/', function(request, response) {
+//Get the routes from the modules
+var routes = [];
+routes.push( require("./routes/Home.js").route );
+routes.push( require("./routes/Query.js").route );
+routes.push( require("./routes/Device.js").route );
+//Resource route needs to be added last, because it redirects all unmatched /* requests to /ui/*, for assets
+routes.push( require("./routes/Resources.js").route );
 
-
-  var html = jade.renderFile("ui/index.jade",{
-    user:{
-      name:'HomeGuy47201'
-    },
-    date: moment().format('DD-MMM-YY, HH:mm:ss')
-  });
-  console.log(html)
-  response.writeHead(200);
-  response.end(html);
-});
-/* route for resources */
-app.get('/:name', function(request, response) {
-  var options = {
-    root: __dirname + '/ui/',
-    dotfiles: 'deny',
-    headers: {
-      'x-timestamp': Date.now(),
-      'x-sent': true
+for (var i = 0; i < routes.length; i++) {
+  var route = routes[i];
+  console.log(route);
+  if (route.protocol) {
+    switch (route.protocol.toUpperCase()) {
+      case "GET":
+        app.get(route.route, route.handler);
+        break;
+      case "POST":
+        app.post(route.route, route.handler);
+        break;
+      default:
+        app.get(route.route, route.handler);
+        break;
     }
-  };
+  } else {
+    //no protocol assigned, assume GET
+    console.log("No protocol specified for " + route.name + ", so assuming GET");
+    app.get(route.route, route.handler);
+  }
+  app.get(route.route, route.handler);
+}
 
-  var fileName = request.params.name;
-  response.sendFile(fileName, options, function(err) {
-    if(err) {
-      console.log(err);
-      response.status(err.status).end();
-    }
-    else {
-      console.log('Sent:', fileName);
-    }
-  });
-});
 app.listen(3000);
 console.log('Server started on Port 3000');
-
