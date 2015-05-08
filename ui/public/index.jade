@@ -1,0 +1,25 @@
+extends ./_layout.jade
+
+block content
+  div.header
+    h1 Welcome Home, #{user.name}
+    p Last Login time: #{user.lastlogin}
+    ul.notifications
+      li notification 1
+      li notification 2
+      li ...
+  .hr
+  div.page
+    h1.title Information
+    div.rooms
+      for room, roomId in rooms
+        div.room.square
+          h2= room.name
+          for device, deviceId in devices
+            if device.rid === roomId
+              div.device.hidden
+                h2= device.name
+  h1
+    | Last Login: #{date}
+  div
+    | some content here

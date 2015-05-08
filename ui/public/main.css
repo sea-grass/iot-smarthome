@@ -1,0 +1,30 @@
+body{
+  font-family: "Helvetica";
+  text-align: center;
+  padding: 50px 20px 0;
+  background: #f4f4f7;
+  color: #444;
+  margin: 0;
+}
+
+.hr{
+  border-bottom: 1px solid black;
+  width: 100%;
+  height: 1px;
+}
+
+.room {
+  display: inline-block;
+}
+.room > * {
+  margin-left: 10px;
+}
+
+.square {
+  border: 1px solid blue;
+  padding: 2px;
+}
+
+.hidden {
+  /* display: none; */
+}
